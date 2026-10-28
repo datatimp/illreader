@@ -1,14 +1,14 @@
-# ill-reader
+# illreader
 
 Read an Adobe Illustrator `.ai` file's own data, straight from the file. No Illustrator needed.
 
-ill-reader is not made by or affiliated with Adobe. "Adobe" and "Illustrator" are trademarks of Adobe Inc.
+illreader is not made by or affiliated with Adobe. "Adobe" and "Illustrator" are trademarks of Adobe Inc.
 
 ## Purpose
 
 AI coding agents can't open Illustrator. When they're handed an `.ai` file, the best they can usually do is read its PDF preview or look at a screenshot. Both lose a lot. Group names are gone. Hidden layers are gone. Live type is often flattened, so there's no font, size or leading to read. The agent ends up guessing from pixels.
 
-Illustrator also saves its own native data inside every PDF-compatible `.ai` file. ill-reader reads that data and prints what the designer actually built, as plain text an agent (or a person) can read:
+Illustrator also saves its own native data inside every PDF-compatible `.ai` file. illreader reads that data and prints what the designer actually built, as plain text an agent (or a person) can read:
 
 - Layers, sublayers and named groups, with hidden objects marked
 - Live text: the copy, font (PostScript name), size, leading, tracking, alignment, CMYK color, and whether it's point or area type
@@ -103,7 +103,7 @@ The font list is cached in `~/.cache/illreader-fonts.json`, so later runs are fa
 
 ### Use it with an AI agent
 
-ill-reader is a plain command-line tool, so any agent that can run shell commands can use it. Claude Code, Cursor, Codex and others all can. Install it as above, then tell the agent where it is. For example:
+illreader is a plain command-line tool, so any agent that can run shell commands can use it. Claude Code, Cursor, Codex and others all can. Install it as above, then tell the agent where it is. For example:
 
 > To read an `.ai` file, run `~/illreader/.venv/bin/python ~/illreader/illreader.py FILE.ai > outline.txt`, then read `outline.txt`. Take type specs, colors and positions from it, not from a render of the file.
 
@@ -127,7 +127,7 @@ Some tips worth passing on to the agent:
 
 - The file must be saved with **Create PDF Compatible File** turned on (Illustrator's default). Without it, there's no native data to read.
 - With several artboards, positions are measured from the first artboard. The header lists each other artboard's offset.
-- Group names come out cleaned up: Illustrator stores spaces as `_` and adds number suffixes, and ill-reader strips both.
+- Group names come out cleaned up: Illustrator stores spaces as `_` and adds number suffixes, and illreader strips both.
 - OpenType features, kerning pairs and tab stops aren't reported.
 - Outlined-type detection looks for rows of letter-sized shapes sharing a baseline. Small logo lettering shows up too, and very short words (about two letters) can be missed.
 - For a variable font, `measure_type.py` measures its default instance.
