@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+*.ai
+*.json
+!requirements.txt
